@@ -15,6 +15,6 @@ export default function() {
 
 export function handleSummary(data) {
     return {
-        'backend/k6/load.html': htmlReport(data)
+        'k6/load.html': htmlReport(data)
     }
 }
