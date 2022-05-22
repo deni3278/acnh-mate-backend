@@ -8,11 +8,13 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+        <PackageReference Include="MongoDB.Bson" Version="2.15.1" />
+        <PackageReference Include="MongoDB.Driver" Version="2.15.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers" />
+      <ProjectReference Include="..\AcnhMate.Models\AcnhMate.Models.csproj" />
     </ItemGroup>
 
 </Project>
