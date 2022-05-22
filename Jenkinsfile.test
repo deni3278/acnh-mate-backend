@@ -3,15 +3,29 @@ pipeline {
 
     stages {
         stage('Stop and remove old container(s)') {
-            echo 'Stopping and removing...'
+            steps {
+                echo 'Stopping and removing...'
+            }
         }
 
         stage('Create and start new container(s)') {
-            echo 'Creating and starting...'
+            steps {
+                echo 'Creating and starting...'
+            }
         }
 
         stage('Push image(s) to registry') {
-            echo 'Pushing...'
+            steps {
+                echo 'Pushing...'
+            }
+        }
+
+        stage('Deploy to production') {
+            steps {
+                build job: 'prod-backend', wait: false, parameters: [
+                    string(name: 'TAG', value: env.BUILD_NUMBER)
+                ]
+            }
         }
     }
 

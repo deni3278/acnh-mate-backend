@@ -1,17 +1,27 @@
 pipeline {
     agent any
 
+    parameters {
+        string 'TAG'
+    }
+
     stages {
         stage('Stop and remove old container(s)') {
-            echo 'Stopping and removing...'
+            steps {
+                echo 'Stopping and removing...'
+            }
         }
 
         stage('Pull image(s)') {
-            echo 'Pulling...'
+            steps {
+                echo 'Pulling...'
+            }
         }
 
         stage('Create and start new container(s)') {
-            echo 'Creating and starting...'
+            steps {
+                echo 'Creating and starting...'
+            }
         }
     }
 }
