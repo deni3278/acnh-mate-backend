@@ -59,6 +59,18 @@ pipeline {
             }
         }
 
+        stage('Run load test(s)') {
+            steps {
+                sh 'k6 run -e BASE_URL=http://20.223.239.183:8092 backend/k6/load.js'
+            }
+
+            post {
+                always {
+                    archiveArtifacts 'k6/load.html'
+                }
+            }
+        }
+
         stage('Push image(s) to registry') {
             steps {
                 sh 'docker compose --env-file test.env push'
