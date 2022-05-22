@@ -5,7 +5,7 @@ pipeline {
         stage('Run unit test(s)') {
             steps {
                 dir('AcnhMate.Tests') {
-                    sh 'sudo dotnet clean'
+                    sh 'sudo rm -rf TestResults'
                     sh "sudo dotnet test --collect:'XPlat Code Coverage'"
                 }
             }
