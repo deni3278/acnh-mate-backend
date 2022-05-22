@@ -61,7 +61,7 @@ pipeline {
 
         stage('Run load test(s)') {
             steps {
-                sh 'k6 run -e BASE_URL=http://20.223.239.183:8092 backend/k6/load.js'
+                sh 'k6 run -e BASE_URL=http://20.223.239.183:8092 k6/load.js'
             }
 
             post {
