@@ -8,19 +8,24 @@ pipeline {
     stages {
         stage('Stop and remove old container(s)') {
             steps {
-                echo 'Stopping and removing...'
+                script {
+                    try {
+                        sh 'docker compose -p prod-backend --env-file prod.env down'
+                    } catch (err) {}
+                }
             }
         }
 
         stage('Pull image(s)') {
             steps {
-                echo 'Pulling...'
+                sh 'docker compose --env-file prod.env pull'
             }
         }
 
         stage('Create and start new container(s)') {
             steps {
-                echo 'Creating and starting...'
+                    sh 'docker compose -p prod-backend --env-file prod.env up -d'
+                    sh 'docker ps'
             }
         }
     }
