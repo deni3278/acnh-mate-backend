@@ -1,0 +1,9 @@
+﻿# IDEs
+
+.idea
+.vs
+
+# Build
+
+bin
+obj
