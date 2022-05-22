@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Stop and remove old container(s)') {
+            echo 'Stopping and removing...'
+        }
+
+        stage('Create and start new container(s)') {
+            echo 'Creating and starting...'
+        }
+
+        stage('Push image(s) to registry') {
+            echo 'Pushing...'
+        }
+    }
+
+    post {
+        always {
+            echo 'Finished.'
+        }
+    }
+}

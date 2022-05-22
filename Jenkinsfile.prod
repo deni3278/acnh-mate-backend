@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Stop and remove old container(s)') {
+            echo 'Stopping and removing...'
+        }
+
+        stage('Pull image(s)') {
+            echo 'Pulling...'
+        }
+
+        stage('Create and start new container(s)') {
+            echo 'Creating and starting...'
+        }
+    }
+}
