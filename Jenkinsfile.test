@@ -2,6 +2,21 @@ pipeline {
     agent any
 
     stages {
+        stage('Build API') {
+            when {
+                anyOf {
+                    changeset 'AcnhMate.Api/**'
+                }
+            }
+
+            steps {
+                dir('AcnhMate.Api') {
+                    sh 'sudo dotnet clean'
+                    sh 'sudo dotnet publish -c Release'
+                }
+            }
+        }
+
         stage('Stop and remove old container(s)') {
             steps {
                 echo 'Stopping and removing...'
