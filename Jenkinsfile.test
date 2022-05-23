@@ -6,7 +6,9 @@ pipeline {
             steps {
                 dir('AcnhMate.Tests') {
                     sh 'sudo rm -rf TestResults'
-                    sh "sudo dotnet test --collect:'XPlat Code Coverage'"
+                    sh "sudo dotnet test --collect:'XPlat Code Coverage' --logger='trx;LogFileName=TestResults.trx'"
+                    
+                    step([$class: 'MSTestPublisher', testResultsFile:"TestResults/*.trx", failOnError: false, keepLongStdio: true])
                 }
             }
 
