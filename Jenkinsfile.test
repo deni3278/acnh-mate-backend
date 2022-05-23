@@ -6,7 +6,10 @@ pipeline {
             steps {
                 dir('AcnhMate.Tests') {
                     sh 'sudo rm -rf TestResults'
-                    sh "sudo dotnet test --collect:'XPlat Code Coverage'"
+                    sh "sudo dotnet test --collect:'XPlat Code Coverage' --logger='trx;LogFileName=TestResults.trx'"
+                    sh 'sudo chmod -R a+rw TestResults'
+                    
+                    mstest testResultsFile:'TestResults/*.trx', keepLongStdio: true
                 }
             }
 
