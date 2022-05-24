@@ -38,7 +38,6 @@ services:
       - AnimalCrossingDatabaseSettings__DataBaseName=acnhDB
     depends_on:
       - db
-      -
         
         
   #  elasticsearch:
