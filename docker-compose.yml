@@ -34,7 +34,7 @@ services:
     ports:
       - ${API_PORT}:80
     environment:
-      - AnimalCrossingDatabaseSettings__ConnectionString=mongodb://root:password@20.223.239.183:${DB_PORT}/?authSource=admin&directConnection=true&ssl=false
+      - AnimalCrossingDatabaseSettings__ConnectionString=mongodb://${DB_USERNAME}:${DB_PASSWORD}@${DB_CONTAINER}/?authSource=admin&directConnection=true&ssl=false
       - AnimalCrossingDatabaseSettings__DataBaseName=acnhDB
     depends_on:
       - db
