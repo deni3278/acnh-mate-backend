@@ -20,7 +20,7 @@ services:
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=${DB_USERNAME}
       - ME_CONFIG_MONGODB_ADMINPASSWORD=${DB_PASSWORD}
-      - ME_CONFIG_MONGODB_URL=mongodb://root:password@20.223.239.183:${DB_PORT}/
+      - ME_CONFIG_MONGODB_URL=mongodb://${DB_USERNAME}:${DB_PASSWORD}@${DB_CONTAINER}/
       - ME_CONFIG_MONGODB_SERVER=${DB_CONTAINER}
     depends_on:
       - db
@@ -38,31 +38,31 @@ services:
       - AnimalCrossingDatabaseSettings__DataBaseName=acnhDB
     depends_on:
       - db
-        
-        
-  #  elasticsearch:
-  #    image: elasticsearch:7.17.3
-  #    container_name: elasticsearch-container
-  #    environment:
-  #      - node.name=elasticsearch
-  #      - discovery.type=single-node
-  #      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-  #      - xpack.security.http.ssl.enabled=false
-  #      - xpack.security.enabled=false
-  #    ulimits:
-  #      memlock:
-  #        soft: -1
-  #        hard: -1
-  #    ports:
-  #      - "9200:9200"
-  #    volumes:
-  #      - elastic_volume:/usr/share/elasticsearch/data
-  #  kibana:
-  #    image: kibana:7.17.3
-  #    container_name: kibana-container
-  #    ports:
-  #      - "5601:5601"
-  #    environment:
-  #      ELASTICSEARCH_URL: "localhost:9200"
-  #    depends_on:
-  #      - elasticsearch
+  
+  
+#  elasticsearch:
+#    image: elasticsearch:7.17.3
+#    container_name: elasticsearch-container
+#    environment:
+#      - node.name=elasticsearch
+#      - discovery.type=single-node
+#      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+#      - xpack.security.http.ssl.enabled=false
+#      - xpack.security.enabled=false
+#    ulimits:
+#      memlock:
+#        soft: -1
+#        hard: -1
+#    ports:
+#      - "9200:9200"
+#    volumes:
+#      - elastic_volume:/usr/share/elasticsearch/data
+#  kibana:
+#    image: kibana:7.17.3
+#    container_name: kibana-container
+#    ports:
+#      - "5601:5601"
+#    environment:
+#      ELASTICSEARCH_URL: "localhost:9200"
+#    depends_on:
+#      - elasticsearch
